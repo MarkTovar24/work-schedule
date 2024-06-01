@@ -18,6 +18,19 @@ saveBtn.click(function() {
   console.log(currentDay);
 }
 
+var currentTime = dayjs().hour()
+for (var i = 9; i < 19; i++) {
+  var blockHour = $('hour-'+ i)
+  console.log(i)
+  if (currentTime === i) {
+    blockHour.addClass('present').siblings().removeClass('past', 'future')
+  } else if (currentTime < i) {
+    blockHour.addClass('future').siblings().removeClass('past', 'present')
+  } else if (currentTime > i) {
+    blockHour.addClass('past').siblings().removeClass('present', 'future')
+  }
+}
+
 description.each(function(){
   var timeId = $(this).parent().attr('id');
   var savedData = localStorage.getItem(timeId)
@@ -25,6 +38,6 @@ description.each(function(){
   if (savedData) {
     $(this).val(savedData);
   }
- 
+ today();
   
 })
