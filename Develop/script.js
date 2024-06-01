@@ -18,8 +18,9 @@ saveBtn.click(function() {
   console.log(currentDay);
 }
 
-var currentTime = dayjs().hour()
+
 for (var i = 9; i < 19; i++) {
+  var currentTime = dayjs().hour()
   var blockHour = $('hour-'+ i)
   console.log(i)
   if (currentTime === i) {
